@@ -1,6 +1,6 @@
 #![feature(i128_type)]
 
-use std::net::{IpAddr, Ipv4Addr, Ipv6Addr};
+use std::net::{IpAddr;
 use std::str::FromStr;
 use std::env;
 use std::process::exit;
@@ -30,15 +30,17 @@ fn main() {
     
     // Match on a result and do some work if OK.
     match ip {
-            Result::Ok(val) => 
-                if val.is_ipv4() {
-                    let numeric =  u32::from(Ipv4Addr::from_str(search_ip).unwrap());
+        Result::Ok(val) => 
+            match val {
+                IpAddr::V4(val) => {
+                    let numeric =  u32::from(val);
                     println!("{:?} {}", val, numeric);
-                }
-                else {
-                    let numeric =  u128::from(Ipv6Addr::from_str(search_ip).unwrap());
+                },
+                IpAddr::V6(val) => {
+                    let numeric =  u128::from(val);
                     println!("{:?} {}", val, numeric);
-                },                
-            Result::Err(err) => println!("BAD IP {:?}", err)
-        }
+                },
+            },               
+        Result::Err(err) => println!("BAD IP {:?}", err)
+    }
 }
