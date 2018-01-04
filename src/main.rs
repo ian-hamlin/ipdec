@@ -34,11 +34,11 @@ fn main() {
             match val {
                 IpAddr::V4(val) => {
                     let numeric =  u32::from(val);
-                    println!("{:?} {}", val, numeric);
+                    println!("IPv4 {} {}", val, numeric);
                 },
                 IpAddr::V6(val) => {
                     let numeric =  u128::from(val);
-                    println!("{:?} {}", val, numeric);
+                    println!("IPv6 {} {}", val, numeric);
                 },
             },               
         Result::Err(err) => println!("BAD IP {:?}", err)
