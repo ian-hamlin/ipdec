@@ -32,13 +32,13 @@ fn main() {
     match ip {
         Result::Ok(val) => 
             match val {
-                IpAddr::V4(val) => {
-                    let numeric =  u32::from(val);
-                    println!("IPv4 {} {}", val, numeric);
+                IpAddr::V4(ip_v4) => {
+                    let numeric =  u32::from(ip_v4);
+                    println!("IPv4 {} {}", ip_v4, numeric);
                 },
-                IpAddr::V6(val) => {
-                    let numeric =  u128::from(val);
-                    println!("IPv6 {} {}", val, numeric);
+                IpAddr::V6(ip_v6) => {
+                    let numeric =  u128::from(ip_v6);
+                    println!("IPv6 {} {}", ip_v6, numeric);
                 },
             },               
         Result::Err(err) => println!("BAD IP {:?}", err)
