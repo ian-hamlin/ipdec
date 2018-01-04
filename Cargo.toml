@@ -1,5 +1,5 @@
 [package]
-name = "rusty_ip"
+name = "ipdec"
 version = "0.1.0"
 authors = ["ian-hamlin <ian-hamlin@users.noreply.github.com>"]
 
