@@ -1,5 +1,3 @@
-#![feature(i128_type)]
-
 use std::net::{IpAddr};
 use std::str::FromStr;
 use std::env;
