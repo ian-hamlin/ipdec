@@ -1,7 +1,7 @@
-use std::net::{IpAddr};
-use std::str::FromStr;
 use std::env;
+use std::net::IpAddr;
 use std::process::exit;
+use std::str::FromStr;
 
 fn main() {
     /*  
@@ -13,7 +13,7 @@ fn main() {
     */
     // Read the args.  Arg 0 is always the name/path of the command
     let args: Vec<String> = env::args().collect();
-    
+
     // Check if we have our 2nd arg
     if args.len() < 2 {
         println!("At least one argument is required.");
@@ -25,20 +25,19 @@ fn main() {
 
     // Convert the string to an actual IP
     let ip = IpAddr::from_str(search_ip);
-    
+
     // Match on a result and do some work if OK.
     match ip {
-        Result::Ok(val) => 
-            match val {
-                IpAddr::V4(ip_v4) => {
-                    let numeric =  u32::from(ip_v4);
-                    println!("IPv4 {} {}", ip_v4, numeric);
-                },
-                IpAddr::V6(ip_v6) => {
-                    let numeric =  u128::from(ip_v6);
-                    println!("IPv6 {} {}", ip_v6, numeric);
-                },
-            },               
-        Result::Err(err) => println!("BAD IP {:?}", err)
+        Result::Ok(val) => match val {
+            IpAddr::V4(ip_v4) => {
+                let numeric = u32::from(ip_v4);
+                println!("IPv4 {} {}", ip_v4, numeric);
+            }
+            IpAddr::V6(ip_v6) => {
+                let numeric = u128::from(ip_v6);
+                println!("IPv6 {} {}", ip_v6, numeric);
+            }
+        },
+        Result::Err(err) => println!("BAD IP {:?}", err),
     }
 }
